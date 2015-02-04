@@ -1,4 +1,6 @@
 class ProductsController < ApplicationController
+  before_action :authenticate_user!, only: [:new, :edit, :update, :destroy, :create]
+  before_action :authenticate_owner, only: [:edit, :update]
   expose(:category)
   expose(:products)
   expose(:product)
@@ -42,9 +44,18 @@ class ProductsController < ApplicationController
     redirect_to category_url(product.category), notice: 'Product was successfully destroyed.'
   end
 
+
   private
 
   def product_params
     params.require(:product).permit(:title, :description, :price, :category_id)
   end
+
+  def authenticate_owner
+    unless current_user == product.user_id
+      redirect_to category_product_path
+      flash.now[:error] = "You are not allowed to edit this product."
+    end
+  end
+
 end
