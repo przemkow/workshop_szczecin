@@ -5,7 +5,7 @@ class Product < ActiveRecord::Base
 
   #Validations 
   validates_presence_of :title, :price, :description
-  validates :price ,format: {with: /\A\d+(?:\.\d{0,2})?\z/} #maybe gem money-rails,would make it more clear(?)
+  validates :price ,format: { with: /\A\d+(?:\.\d{0,2})?\z/ } #maybe gem money-rails,would make it more clear(?)
 
   def average_rating
   	self.reviews.average(:rating) # .average!!! -method to REMEMBER! 

@@ -1,0 +1,27 @@
+.col-md-2
+  .h1
+    = current_user.firstname 
+    = current_user.lastname
+
+  %p
+    %b Email:
+    = current_user.email
+  %p
+    %b Created at:
+    = current_user.created_at
+
+.col-md-10
+  .h3 User's five last reviews:
+  -@user_reviews.last(5).reverse.each do |review|
+    .well 
+      .row
+        .col-xs-6
+          .text-left
+            %b Product:
+            = review.product.title
+        .col-xs-6
+          .text-right
+            = review.created_at.strftime("%d/%m/%Y")
+      %blockquote
+        =review.content
+
