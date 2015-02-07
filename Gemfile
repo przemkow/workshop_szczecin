@@ -20,6 +20,7 @@ gem 'travis'
 gem 'ffaker'
 gem 'konf'
 
+
 group :development do
   gem 'spring'
 end

@@ -7,7 +7,7 @@ class ReviewsController < ApplicationController
   end
 
   def create
-    self.review = Review.new(review_params) #i'm not sure if this self is necessary, in other controler, lack of it break testes
+    self.review = Review.new(review_params) #i'm not sure if this self is necessary, in others controlers, lack of it break testes
     review.user = current_user
     if review.save
       product.reviews << review
