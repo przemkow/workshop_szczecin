@@ -17,7 +17,7 @@
       %p 
         %b Average rating:
         = product.average_rating
-  - if product.user_id == current_user.id  
+  - if product.user == current_user  
     = link_to 'Edit', edit_category_product_path(category.id, product.id), class: 'btn btn-primary'
   = link_to 'Back', category_path(category), class: 'btn btn-primary'
 

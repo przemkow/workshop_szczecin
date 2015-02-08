@@ -13,7 +13,7 @@
 .col-md-10
   .h3 User's five last reviews:
   -if @user_reviews.empty?
-    user didn't post any reviews 
+    %i User didn't post any reviews 
   -else
     -@user_reviews.last(5).reverse.each do |review|
       .well 
@@ -21,10 +21,14 @@
           .col-xs-6
             .text-left
               %b Product:
-              = review.product.title
+              = link_to "#{review.product.title}", category_product_path(review.product.category,review.product)
           .col-xs-6
             .text-right
               = review.created_at.strftime("%d/%m/%Y")
         %blockquote
           =review.content
+        - review.rating.times do
+          .glyphicon.glyphicon-star
+        - (5-review.rating).times do
+          .glyphicon.glyphicon-star-empty
 
