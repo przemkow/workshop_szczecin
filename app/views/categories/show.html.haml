@@ -1,18 +1,27 @@
 %p#notice= notice
 
 %p
-  %b Name:
-  = category.name
+  .jumbotron
+    .container
+      .h1
+        = category.name
 
+.h2
+  Products:
 %p
   - category.products.each do |product|
-    = product.title
+    .col-sm-4
+      .panel.panel-default
+        .panel-heading
+          .panel-title
+            = link_to "#{product.title}",category_product_path(category,product)
+        .panel-body
+          = product.description
+.col-sm-12
+  %p
+  - if  user_signed_in? 
+    %h3 New product
+    = render 'products/form'
+    = link_to 'Edit', edit_category_path(category), class: 'btn btn-primary'
 
-
-%p
-- if  user_signed_in? 
-  %h3 New product
-  = render 'products/form'
-  = link_to 'Edit', edit_category_path(category)
-  \|
-= link_to 'Back', categories_path, class: 'btn btn-primary'
+  = link_to 'Back', categories_path, class: 'btn btn-primary'

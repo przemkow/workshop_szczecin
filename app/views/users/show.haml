@@ -12,16 +12,19 @@
 
 .col-md-10
   .h3 User's five last reviews:
-  -@user_reviews.last(5).reverse.each do |review|
-    .well 
-      .row
-        .col-xs-6
-          .text-left
-            %b Product:
-            = review.product.title
-        .col-xs-6
-          .text-right
-            = review.created_at.strftime("%d/%m/%Y")
-      %blockquote
-        =review.content
+  -if @user_reviews.empty?
+    user didn't post any reviews 
+  -else
+    -@user_reviews.last(5).reverse.each do |review|
+      .well 
+        .row
+          .col-xs-6
+            .text-left
+              %b Product:
+              = review.product.title
+          .col-xs-6
+            .text-right
+              = review.created_at.strftime("%d/%m/%Y")
+        %blockquote
+          =review.content
 

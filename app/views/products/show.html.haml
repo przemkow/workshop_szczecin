@@ -1,25 +1,35 @@
 %p#notice= notice
 %p#error= flash[:error]
 
-%p
-  %b Title:
-  = product.title
-%p
-  %b Description:
-  = product.description
-%p
-  %b Price:
-  = product.price
+.col-md-8
+  .jumbotron
+    .container
+      .h1
+        = product.title
+      %p
+        = product.description
+      %p
+        %b Price:
+        = product.price
+      %p
+        %b Category:
+        = product.category.name
+      %p 
+        %b Average rating:
+        = product.average_rating
+  - if product.user_id == current_user.id  
+    = link_to 'Edit', edit_category_product_path(category.id, product.id), class: 'btn btn-primary'
+  = link_to 'Back', category_path(category), class: 'btn btn-primary'
 
-%p
-  %b Category
-  = product.category.name
 
-%h3 Reviews
-= render 'reviews/form'
-
-= render reviews
-
-= link_to 'Edit', edit_category_product_path(category.id, product.id)
-\|
-= link_to 'Back', category_products_path, class: 'btn btn-primary'
+.col-md-4
+  .well.well-lg
+    %h3 Reviews
+    = render reviews
+    - if user_signed_in?
+      %h3 Write your own review:
+      = render 'reviews/form'
+    - else
+      %i 
+        Wanna write own review? Just
+        = link_to 'Log in!', new_user_session_path

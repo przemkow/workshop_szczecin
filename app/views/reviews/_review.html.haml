@@ -1,4 +1,10 @@
-%p= review.content
-%p
-  %b= review.rating
-  %em= review.author
+.well.well-lg
+  %p= review.content
+  %p
+    %b Score:
+    = review.rating
+  %p 
+    %b By:  
+    %em= review.author
+    at
+    %em= review.created_at.strftime("%H:%M %d/%m/%Y")
