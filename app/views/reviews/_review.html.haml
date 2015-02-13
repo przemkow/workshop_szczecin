@@ -1,4 +1,6 @@
 .well.well-lg
+  .avatar_float
+    = image_tag review.user.avatar_url(:small_thumb).to_s
   %p= review.content
   %p 
     %b By:  
@@ -10,3 +12,4 @@
     .glyphicon.glyphicon-star
   - (5-review.rating).times do
     .glyphicon.glyphicon-star-empty    
+  .clear

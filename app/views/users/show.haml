@@ -1,8 +1,8 @@
 .col-md-2
+  = image_tag current_user.avatar_url(:thumb).to_s
   .h1
     = current_user.firstname 
     = current_user.lastname
-
   %p
     %b Email:
     = current_user.email

@@ -19,7 +19,8 @@ gem 'therubyracer', platforms: :ruby
 gem 'travis'
 gem 'ffaker'
 gem 'konf'
-
+gem 'rmagick'
+gem 'carrierwave'
 
 group :development do
   gem 'spring'

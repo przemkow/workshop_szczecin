@@ -44,6 +44,11 @@ GEM
     bootstrap-sass (3.1.1.1)
       sass (~> 3.2)
     builder (3.2.2)
+    carrierwave (0.10.0)
+      activemodel (>= 3.2.0)
+      activesupport (>= 3.2.0)
+      json (>= 1.7)
+      mime-types (>= 1.16)
     coderay (1.1.0)
     coffee-rails (4.1.0)
       coffee-script (>= 2.2.0)
@@ -152,6 +157,7 @@ GEM
     request_store (1.1.0)
     responders (1.1.2)
       railties (>= 3.2, < 4.2)
+    rmagick (2.13.4)
     rspec-core (3.1.7)
       rspec-support (~> 3.1.0)
     rspec-expectations (3.1.2)
@@ -218,6 +224,7 @@ PLATFORMS
 
 DEPENDENCIES
   bootstrap-sass (~> 3.1.0)
+  carrierwave
   coffee-rails
   database_cleaner
   decent_decoration
@@ -233,6 +240,7 @@ DEPENDENCIES
   pry
   quiet_assets
   rails (= 4.1.8)
+  rmagick
   rspec-rails
   sass-rails!
   shoulda-matchers

@@ -6,7 +6,8 @@ class User < ActiveRecord::Base
 
   has_many :reviews
   has_many :products
- 
+  mount_uploader :avatar, AvatarUploader
+  
   # Validation
   validates_presence_of :firstname, :lastname
 end
