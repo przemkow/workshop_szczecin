@@ -10,6 +10,7 @@
       = f.input :password, required: true
       = f.input :password_confirmation, required: true
       %p
+        %b Profile picture
         = f.file_field :avatar
     .form-actions
       = f.button :submit, "Sign up"

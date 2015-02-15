@@ -1,0 +1,35 @@
+.col-md-2
+  = image_tag current_user.avatar_url(:thumb).to_s
+  .h1
+    = current_user.firstname 
+    = current_user.lastname
+  %p
+    %b Email:
+    = current_user.email
+  %p
+    %b Created at:
+    = current_user.created_at
+  %p
+    = link_to "Edit your profile",  edit_user_registration_path
+.col-md-10
+  .h3 User's five last reviews:
+  -if @user_reviews.empty?
+    %i User didn't post any reviews 
+  -else
+    -@user_reviews.last(5).reverse.each do |review|
+      .well 
+        .row
+          .col-xs-6
+            .text-left
+              %b Product:
+              = link_to "#{review.product.title}", category_product_path(review.product.category,review.product)
+          .col-xs-6
+            .text-right
+              = review.created_at.strftime("%d/%m/%Y")
+        %blockquote
+          =review.content
+        - review.rating.times do
+          .glyphicon.glyphicon-star
+        - (5-review.rating).times do
+          .glyphicon.glyphicon-star-empty
+
